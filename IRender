@@ -1,3 +1,4 @@
+//I Did change every line of code from IRenderer to IRender
 package PClient.gui.hud;
 
 public interface IRender extends IRenderConfig {
