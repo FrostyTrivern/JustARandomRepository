@@ -60,6 +60,7 @@ public class HUDManager<RenderEvent> {
     	if(mc.currentScreen == null || mc.currentScreen instanceof GuiContainer || mc.currentScreen instanceof GuiChat) {
     		for(IRender renderer : registeredRenderers) {
     			callRenderer(renderer);
+    			System.out.println("Hola!");
     		}
     	}
     }
