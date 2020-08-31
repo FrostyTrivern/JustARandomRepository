@@ -77,12 +77,6 @@ public class HUDManager<RenderEvent> {
 		
 		renderer.render(pos);
 	}
-
-	public void register(ModHelloWorld modHelloWorld) {
-		// TODO Auto-generated method stub
-		
-	}
-    
     
 	
 }
