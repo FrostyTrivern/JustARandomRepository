@@ -1,40 +1,42 @@
-package PClient.mods;
+package PClient.mods.impl;
 
-import PClient.Client;
-import PClient.Event.EventManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
+import PClient.gui.hud.ScreenPosition;
+import PClient.mods.ModDraggable;
 
-public class Mod {
-	
-	private boolean isEnabled = true;
-	
-	protected final Minecraft mc;
-	protected final FontRenderer font;
-	protected final Client client;
-	
-	public Mod() {
-		this.mc = Minecraft.getMinecraft();
-		this.font = mc.fontRendererObj;
-		this.client = Client.getInstance();
-		
-		setEnabled(isEnabled);
+public class ModHelloWorld extends ModDraggable {
+
+	private ScreenPosition pos;
+
+	@Override
+	public int getWidth() {
+		return font.getStringWidth("HelloWorld (Dummy)");
+	}
+
+	@Override
+	public int getHeight() {
+		return font.FONT_HEIGHT;
+	}
+
+	@Override
+	public void render(ScreenPosition pos) {
+		font.drawString("Hello World", pos.getAbsoluteX() + 1, pos.getAbsoluteY() + 1, -1);
 	}
 	
-	public void setEnabled(boolean isEnabled) {
-		this.isEnabled = isEnabled;
-		
-		if(isEnabled) {
-			EventManager.register(this);
-		}
-		else {
-			EventManager.unregister(this);
-		}
+	@Override
+	public void renderDummy(ScreenPosition pos) {
+		font.drawString("Hello World (Dummy)", pos.getAbsoluteX() + 1, pos.getAbsoluteY() + 1, 0xFF00FF00);
+	}
+
+	@Override
+	public void save(ScreenPosition pos) {
+		this.pos = pos;
+	}
+
+	@Override
+	public ScreenPosition load() {
+		return pos;
 	}
 	
-	public boolean isEnabled() {
-		return isEnabled;
-	}
- 	
+	
 
 }
